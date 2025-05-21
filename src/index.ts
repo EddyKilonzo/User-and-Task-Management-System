@@ -1,4 +1,3 @@
-
 interface Users {
     name: string;
     id: number;
@@ -121,18 +120,22 @@ const user2 = userManager.createUser("Jane Doe", 2, "jane@gmail.com");
 
 const taskManager = new TaskManager();
 
-const task1 = taskManager.createTask("Project A", 1, user1);
-const task2 = taskManager.createTask("Project B", 2, user2);
+const task1 = taskManager.createTask("Project 1", 1, user1);
+const task2 = taskManager.createTask("Project 2", 2, user2);
 
 
-console.log(userManager.getUsers());
-console.log(taskManager.getTasks());
+
 
 taskManager.assignTask(1, user2);
 taskManager.unassignTask(2);
 taskManager.updateTask(1, { task: "Project C" });
 taskManager.deleteTask(2);
+console.log(taskManager.getTasks());
+
+userManager.createUser("John Doe", 1, "john@gmail.com");
 userManager.updateUser(1, { name: "John Doe", email: "john.doe@gmail.com" });
 userManager.deleteUser(2);
+console.log(userManager.getUsers());
+
 
 
