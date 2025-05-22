@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Task Management System</title>
+</head>
+<body>
+    <h1 class="title">Task Management System</h1>
+
+    <main>
+        <form id="userForm"  >
+            <h1>User Management</h1>
+
+            <input type="number" name="userId" id="userId" placeholder=" Enter User ID" >
+            <input type="text" name="userName" id="userName" placeholder="Enter User Name" >
+            <input type="text" name="userEmail" id="userEmail" placeholder="Enter User Email" >
+            <div class="buttons">
+                <button type="submit" name="addUser" id="addUserButton">Add User</button>
+                <button type="submit" id="viewUsersButton">View Users</button>
+                <button type="submit" name="deleteUser" id="deleteUserButton">Delete User</button>
+            </div>
+        </form>
+        <div class="getUsers">
+            <div id="userList"></div>
+        </div>
+        
+
+        <form action="post" method="post">
+            <h1>Task Management</h1>
+
+            <input type="number" name="taskId" id="taskId" placeholder="Enter Task ID..." required>
+            <input type="text" name="taskName" id="" placeholder="Enter task name..." required>
+            <input type="text" name="taskDescription" placeholder="Enter Task Description..." id="" required>
+
+            <div class="buttons">
+                <button type="submit" name="addTask">Add Task</button>
+                <button type="submit">View Tasks</button>
+                <button type="submit" name="deleteTask">Delete Task</button>
+            </div>
+        </form>
+        <div class="getUsers">
+            <div id="userList"></div>
+        </div>
+
+
+        <form class="assignForm" action="" method="post">
+            <h1>Task Assignment</h1>
+
+            <input type="number" name="taskId" id="taskId" placeholder="Enter Task ID..." required>
+            <select name="assignUserId" id="assignUserId">
+                <option id="" value="" disabled selected>Select User</option>
+                <script>
+                    
+                </script>
+                
+            </select>
+
+            <div class="buttons">
+                <button type="submit" name="assignTask">Assign Task</button>
+                <button type="submit" name="unassignTask">Unassign Assignment</button>
+            </div>
+        </form>
+        <div class="getAssignments">
+            <ul id="assignmentList"> </ul>
+        </div>
+    </main>
+
+    
+</body>
+    <script src="../dist/index.js"></script>
+    <script src="ui.js"></script>
+
+</html>
