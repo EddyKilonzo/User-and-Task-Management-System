@@ -27,21 +27,21 @@
         </div>
         
 
-        <form action="post" method="post">
+        <form id="taskForm">
             <h1>Task Management</h1>
 
-            <input type="number" name="taskId" id="taskId" placeholder="Enter Task ID..." required>
-            <input type="text" name="taskName" id="" placeholder="Enter task name..." required>
-            <input type="text" name="taskDescription" placeholder="Enter Task Description..." id="" required>
+            <input type="number" name="taskId" id="taskId" placeholder="Enter Task ID..." >
+            <input type="text" name="taskName" id="taskName" placeholder="Enter task name..." >
+            <!-- <input type="text" name="taskDescription" placeholder="Enter Task Description..." id="" > -->
 
             <div class="buttons">
-                <button type="submit" name="addTask">Add Task</button>
-                <button type="submit">View Tasks</button>
-                <button type="submit" name="deleteTask">Delete Task</button>
+                <button type="submit" name="addTask" id="addTaskButton">Add Task</button>
+                <button type="submit" id="viewTasksButton">View Tasks</button>
+                <button type="submit" name="deleteTask" id="deleteTaskButton">Delete Task</button>
             </div>
         </form>
-        <div class="getUsers">
-            <div id="userList"></div>
+        <div class="getTasks">
+            <div id="taskList"></div>
         </div>
 
 

@@ -104,7 +104,38 @@ form .buttons button:hover {
     border-radius: 5px;
     
 }
+.getTasks {
+    margin: 20px;
+    padding: 20px;
+    background-color: #f5f6fa;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
 
+#taskList {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+#taskList h2 {
+    color: #192a56;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#taskList ul {
+    list-style: none;
+    padding: 0;
+}
+
+#taskList li {
+    background-color: white;
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
 
 
 

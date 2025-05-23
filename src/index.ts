@@ -8,6 +8,7 @@ interface Users {
 interface Tasks{
     task: string;
     id: number;
+    description?: string;
     
 }
 
