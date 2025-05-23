@@ -1,5 +1,5 @@
-import { UserManager } from './index';
-import { TaskManager } from './index';
+import { UserManager } from './index.ts';
+import { TaskManager } from './index.ts';
 
 declare global {
     interface Window {

@@ -17,9 +17,10 @@ class task {
 class UserManager {
     constructor() {
         this.users = [];
+        this.userId = 1;
     }
-    createUser(name, id, email) {
-        const newUser = new User(name, id, email);
+    createUser(name, userId, email) {
+        const newUser = new User(name, userId++, email);
         this.users.push(newUser);
         console.log(`User ${name} created successfully`);
         return newUser;
@@ -46,18 +47,22 @@ class UserManager {
 class TaskManager {
     constructor() {
         this.tasks = [];
+        this.taskId = 1;
     }
-    createTask(taskName, id, user) {
-        const newTask = new task(taskName, id, user);
+    createTask(taskId, taskName, user) {
+        const newTask = new task(taskName, taskId, user);
         this.tasks.push(newTask);
         console.log(`Task ${taskName} created successfully`);
         return newTask;
     }
-    updateTask(id, updateData) {
-        const taskIndex = this.tasks.findIndex(task => task.id === id);
+    updateTask(updateData) {
+        const taskIndex = this.tasks.findIndex(task => task.id === updateData.id);
         if (taskIndex !== -1) {
             this.tasks[taskIndex].task = updateData.task;
-            console.log(`Task ${id} updated successfully`);
+            console.log(`Task ${updateData.task} updated successfully`);
+        }
+        else {
+            console.log(`Task with ID ${updateData.id} not found`);
         }
     }
     deleteTask(id) {
@@ -70,19 +75,18 @@ class TaskManager {
     getTasks() {
         return this.tasks;
     }
-    assignTask(taskId, assignedUser) {
+    assignTask(taskId, userId) {
         const taskIndex = this.tasks.findIndex(task => task.id === taskId);
-        if (taskIndex !== -1) {
-            this.tasks[taskIndex].user = assignedUser;
-            console.log(`Task ${taskId} assigned successfully to ${assignedUser.name}`);
+        if (taskIndex !== -1 && userId) {
+            this.tasks[taskIndex].user = userId;
+            console.log(`Task ${taskId} assigned successfully to user ${userId}`);
         }
     }
-    unassignTask(taskId, assignedUser) {
+    unassignTask(taskId) {
         const taskIndex = this.tasks.findIndex(task => task.id === taskId);
         if (taskIndex !== -1) {
             this.tasks[taskIndex].user = null;
-            console.log(`Task ${taskId} unassigned successfully from ${assignedUser.name}`);
-            ``;
+            console.log(`Task ${taskId} unassigned successfully`);
         }
     }
 }

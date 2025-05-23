@@ -19,6 +19,7 @@
             <div class="buttons">
                 <button type="submit" name="addUser" id="addUserButton">Add User</button>
                 <button type="submit" id="viewUsersButton">View Users</button>
+                <button type="submit" name="updateUser" id="updateUserButton">Update User</button>
                 <button type="submit" name="deleteUser" id="deleteUserButton">Delete User</button>
             </div>
         </form>
@@ -29,15 +30,17 @@
 
         <form id="taskForm">
             <h1>Task Management</h1>
-
-            <input type="number" name="taskId" id="taskId" placeholder="Enter Task ID..." >
+            
             <input type="text" name="taskName" id="taskName" placeholder="Enter task name..." >
+            <input type="number" name="taskId" id="taskId" placeholder="Enter Task ID..." >
+            
             <!-- <input type="text" name="taskDescription" placeholder="Enter Task Description..." id="" > -->
 
             <div class="buttons">
                 <button type="submit" name="addTask" id="addTaskButton">Add Task</button>
                 <button type="submit" id="viewTasksButton">View Tasks</button>
                 <button type="submit" name="deleteTask" id="deleteTaskButton">Delete Task</button>
+                <button type="submit" id="updateTaskButton">Update</button>
             </div>
         </form>
         <div class="getTasks">
@@ -45,24 +48,19 @@
         </div>
 
 
-        <form class="assignForm" action="" method="post">
+        <form class="assignForm" id="assignForm">
             <h1>Task Assignment</h1>
 
-            <input type="number" name="taskId" id="taskId" placeholder="Enter Task ID..." required>
-            <select name="assignUserId" id="assignUserId">
-                <option id="" value="" disabled selected>Select User</option>
-                <script>
-                    
-                </script>
-                
-            </select>
+            <input type="number" name="taskId" id="assignTask" placeholder="Enter Task ID..." >
+            <input type="number" name="userId" id="assignUser" placeholder="Enter User ID..." >
+            
 
             <div class="buttons">
-                <button type="submit" name="assignTask">Assign Task</button>
-                <button type="submit" name="unassignTask">Unassign Assignment</button>
+                <button type="submit" name="assignTask" id="assignTaskButton">Assign Task</button>
+                <button type="submit" name="unassignTask" id="unassignTaskButton">Unassign Assignment</button>
             </div>
         </form>
-        <div class="getAssignments">
+        <div id="getAssignments" class="getAssignments">
             <ul id="assignmentList"> </ul>
         </div>
     </main>
