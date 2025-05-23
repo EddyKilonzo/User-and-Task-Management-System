@@ -9,7 +9,7 @@ const taskForm = document.getElementById('taskForm');
 const addUserButton = document.getElementById('addUserButton');
 const viewUserButton = document.getElementById('viewUsersButton');
 const deleteUserButton = document.getElementById('deleteUserButton');
-const updateUserButton = document.getElementById('updateUserButton');
+
 
 
 addUserButton.addEventListener('click', (event) => { 
@@ -55,27 +55,27 @@ viewUserButton.addEventListener('click', (event) => {
         
     
 });
-updateUserButton.addEventListener('click', (event) => { 
-    e.preventDefault();
+// updateUserButton.addEventListener('click', (event) => { 
+//     e.preventDefault();
 
-    const idToUpdate = parseInt(userId.value);
-    const updatedName = userName.value;
-    const updatedEmail = userEmail.value;
+//     const idToUpdate = parseInt(userId.value);
+//     const updatedName = userName.value;
+//     const updatedEmail = userEmail.value;
 
-    if (!idToUpdate || !updatedName || !updatedEmail) {
-        alert('Please enter a valid user ID, name, and email');
-    }
+//     if (!idToUpdate || !updatedName || !updatedEmail) {
+//         alert('Please enter a valid user ID, name, and email');
+//     }
 
-    try {
-        window.userManager.updateUser(
-            idToUpdate,
-            updatedName,
-            updatedEmail
-        );
-    } catch (error) {
-        alert('Failed to update user');
-    }
-});
+//     try {
+//         window.userManager.updateUser(
+//             idToUpdate,
+//             updatedName,
+//             updatedEmail
+//         );
+//     } catch (error) {
+//         alert('Failed to update user');
+//     }
+// });
 
 
 
@@ -230,7 +230,7 @@ function displayUnAssignments() {
 
         const user = users.find(user => user.id === task.userId);
         
-        li.innerHTML = `${task.task} - ${user ? user.name : 'Unassigned'}`;      
+        li.innerHTML = `${task.task} - 'Unassigned'}`;      
         ul.appendChild(li);
     });
 
@@ -261,7 +261,7 @@ function displayAssignments() {
 
         const user = users.find(user => user.id === task.userId);
 
-        li.innerHTML = `${task.task} - ${user ? user.name : `assigned to user ${task.userId}`}`;      
+        li.innerHTML = `Task: ${task.task} - Assigned to: ${task.userId} || }`;      
         ul.appendChild(li);
     });
 
