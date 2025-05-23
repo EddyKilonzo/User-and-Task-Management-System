@@ -7,3 +7,9 @@ declare global {
         taskManager: TaskManager;
     }
 }
+declare global {
+    interface Window {
+        userManager: any;
+        taskManager: any;
+    }
+} 

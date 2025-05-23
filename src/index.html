@@ -24,30 +24,32 @@
             </div>
         </form>
         <div class="getUsers">
-            <div id="userList"></div>
+            <div id="userList">Users</div>
         </div>
-        
+    </main>
 
-        <form id="taskForm">
-            <h1>Task Management</h1>
-            
-            <input type="text" name="taskName" id="taskName" placeholder="Enter task name..." >
-            <input type="number" name="taskId" id="taskId" placeholder="Enter Task ID..." >
-            
-            <!-- <input type="text" name="taskDescription" placeholder="Enter Task Description..." id="" > -->
-
-            <div class="buttons">
-                <button type="submit" name="addTask" id="addTaskButton">Add Task</button>
-                <button type="submit" id="viewTasksButton">View Tasks</button>
-                <button type="submit" name="deleteTask" id="deleteTaskButton">Delete Task</button>
-                <button type="submit" id="updateTaskButton">Update</button>
+        <main>
+            <form id="taskForm">
+                <h1>Task Management</h1>
+                
+                <input type="text" name="taskName" id="taskName" placeholder="Enter task name..." >
+                <input type="number" name="taskId" id="taskId" placeholder="Enter Task ID..." >
+                
+                <!-- <input type="text" name="taskDescription" placeholder="Enter Task Description..." id="" > -->
+    
+                <div class="buttons">
+                    <button type="submit" name="addTask" id="addTaskButton">Add Task</button>
+                    <button type="submit" id="viewTasksButton">View Tasks</button>
+                    <button type="submit" name="deleteTask" id="deleteTaskButton">Delete Task</button>
+                    
+                </div>
+            </form>
+            <div class="getTasks">
+                <div id="taskList">Taks</div>
             </div>
-        </form>
-        <div class="getTasks">
-            <div id="taskList"></div>
-        </div>
+        </main>
 
-
+    <main> 
         <form class="assignForm" id="assignForm">
             <h1>Task Assignment</h1>
 
@@ -61,7 +63,7 @@
             </div>
         </form>
         <div id="getAssignments" class="getAssignments">
-            <ul id="assignmentList"> </ul>
+            <ul id="assignmentList"> Task assignment</ul>
         </div>
     </main>
 

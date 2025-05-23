@@ -1,4 +1,6 @@
 
+
+
 const userForm = document.getElementById('userForm');
 const userId = document.getElementById('userId');
 const userName = document.getElementById('userName');
@@ -115,8 +117,9 @@ addTaskButton.addEventListener('click', (event) => {
     );
     alert(`Task ${taskName.value} added successfully`);
     taskForm.reset();
-    displayAssignments(); // Add this line to update assignments view
+    
 });
+
 viewTaskButton.addEventListener('click', (event) => {
     event.preventDefault();
     const tasks = window.taskManager.getTasks();
@@ -142,25 +145,20 @@ viewTaskButton.addEventListener('click', (event) => {
         ul.appendChild(li);
     })
     taskList.appendChild(ul);
-    displayAssignments(); 
+    
+     
 });
 
 
 // updateTaskButton.addEventListener('click', (event) => {
 //     event.preventDefault();
 
-//     const taskForm = document.getElementById('taskForm'); // Add this line
-//     if (!taskForm) {
-//         alert('Task form not found');
-        
-//     }
-
 //     const idToUpdate = parseInt(taskId.value);
 //     const updatedName = taskName.value; 
 
 //     if (!idToUpdate || !updatedName) {
 //         alert('Please enter a valid task ID and name');
-        
+//         return;
 //     }
 
 //     try {
@@ -175,6 +173,7 @@ viewTaskButton.addEventListener('click', (event) => {
 //         alert('Failed to update task: ' + error.message);
 //     }
 // });
+
 deleteTaskButton.addEventListener('click', (event) => {
     event.preventDefault();
 
@@ -198,39 +197,71 @@ deleteTaskButton.addEventListener('click', (event) => {
 
 
 
-const assignTaskId = document.getElementById('assignTask');
-const assignUserId = document.getElementById('assignUser');
-const assignTaskButton =document.getElementById('assignTaskButton');
-const assignmentlist = document.getElementById('assignmentList');
+const assignTaskInput = document.getElementById('assignTask');
+const assignUserInput = document.getElementById('assignUser');
+const assignTaskButton = document.getElementById('assignTaskButton');
+const assignmentList = document.getElementById('assignmentList');
+const unassignTaskButton = document.getElementById('unassignTaskButton');
+const getAssignments = document.getElementById('getAssignments');
 
 
-function displayAssignments() {
+function displayUnAssignments() {
     const getAssignments = document.getElementById('getAssignments');
     
-
-    const tasks = window.taskManager.getTasks();
-    if (!tasks || tasks.length === 0) {
-        getAssignments.innerHTML = '<p>No assignments found</p>';
-        
+    if (!window.taskManager || !window.userManager) {
+        getAssignments.innerHTML = '<p>Task management system not initialized</p>';
+        return;
     }
 
-    getAssignments.innerHTML = '';
-    
+    const tasks = window.taskManager.getTasks();
     getAssignments.innerHTML = '<h2>Task Assignments</h2>';
 
-    const assignments = window.taskManager.getTasks().filter(task => task.userId);
-    if (!assignments || assignments.length === 0) {
+    if (!tasks || tasks.length === 0) {
         getAssignments.innerHTML += '<p>No assignments found</p>';
         return;
     }
 
     const ul = document.createElement('ul');
-    assignments.forEach((task) => {
+    const users = window.userManager.getUsers();
+
+    tasks.forEach((task) => {
         const li = document.createElement('li');
         li.classList.add('assignmentList');
-        const user = window.userManager.getUsers().find(user => user.id === task.userId);
-        const userName = user ? user.name : 'Unknown User';
-        li.innerHTML = `Task: ${task.task} (ID: ${task.id}) is assigned to ${userName} (ID: ${task.userId})`;
+
+        const user = users.find(user => user.id === task.userId);
+        
+        li.innerHTML = `${task.task} - ${user ? user.name : 'Unassigned'}`;      
+        ul.appendChild(li);
+    });
+
+    getAssignments.appendChild(ul);
+}
+function displayAssignments() {
+    const getAssignments = document.getElementById('getAssignments');
+    
+    if (!window.taskManager || !window.userManager) {
+        getAssignments.innerHTML = '<p>Task management system not initialized</p>';
+        return;
+    }
+
+    const tasks = window.taskManager.getTasks();
+    getAssignments.innerHTML = '<h2>Task Assignments</h2>';
+
+    if (!tasks || tasks.length === 0) {
+        getAssignments.innerHTML += '<p>No assignments found</p>';
+        return;
+    }
+
+    const ul = document.createElement('ul');
+    const users = window.userManager.getUsers();
+
+    tasks.forEach((task) => {
+        const li = document.createElement('li');
+        li.classList.add('assignmentList');
+
+        const user = users.find(user => user.id === task.userId);
+
+        li.innerHTML = `${task.task} - ${user ? user.name : `assigned to user ${task.userId}`}`;      
         ul.appendChild(li);
     });
 
@@ -238,10 +269,38 @@ function displayAssignments() {
 }
 
 
+
 assignTaskButton.addEventListener('click', (event) => {
     event.preventDefault();
-    const taskId = parseInt(assignTaskId.value);
-    const userId = parseInt(assignUserId.value);
-    window.taskManager.assignTask(taskId, userId);
+    const taskId = parseInt(assignTaskInput.value);
+    const userId = parseInt(assignUserInput.value);
+    if (!taskId || !userId) {
+        alert('Please enter valid task and user IDs');
+        return;
+    }
+    
+    try {
+        window.taskManager.assignTask(taskId, userId);
+        alert('Task assigned successfully');
+    } catch (error) {
+        alert('Failed to assign task: ' + error.message);
+    }
     displayAssignments();
+});
+
+unassignTaskButton.addEventListener('click', (event) => { 
+    event.preventDefault();
+    const taskId = parseInt(assignTaskInput.value);
+    const userId = parseInt(assignUserInput.value);
+    if (!taskId || !userId) {
+        alert('Please enter valid task and user IDs');
+        return;
+    }
+    try {
+        window.taskManager.unassignTask(taskId, userId);
+        alert('Task unassigned successfully');
+    } catch (error) {
+        alert('Failed to unassign task: ' + error.message);
+    }
+    displayUnAssignments();
 });
